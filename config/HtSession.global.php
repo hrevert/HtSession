@@ -36,7 +36,7 @@ $accessibilityOptions = array(
     /**
      * Login Route
      *
-     * Route where a user will be redirected when an authenticated user tried to access an unaccessible area
+     * Route where a user will be redirected when an unauthenticated user tries to access an unaccessible area
      *
      * Default: 'zfcuser/login'
      *
