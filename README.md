@@ -1,7 +1,7 @@
 HtSession
 =========
 
-A Zend Framework 2 module to manage session configurations, session validators, storing session data in database and to block access to unauthorized users. (Formerly ujjwal/auth)
+A Zend Framework 2 module to manage session configurations, session validators, storing session data in database and to block access to unauthenticated users. (Formerly ujjwal/auth)
 
 ##Requirements
 The requirements of this module is listed in composer.json.
