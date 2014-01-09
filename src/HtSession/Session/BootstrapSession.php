@@ -3,21 +3,47 @@
 namespace HtSession\Session;
 
 use Zend\Session\Container as SessionContainer;
-use Zend\Session\SessionManager as ZendSessionManager;
+use Zend\Session\SessionManager;
 
 class BootstrapSession
 {
-    function __construct(ZendSessionManager $session)
+    /**
+     * @var SessionManager
+     */
+    protected $sessionManager;
+
+    /**
+     * Constructor
+     *
+     * @param SessionManager $sessionManager
+     * @return void
+     */
+    public function __construct(SessionManager $sessionManager)
     {
-        $this->session = $session;
+        $this->sessionManager = $sessionManager;
     }
 
+    /**
+     * gets SessionManager instance
+     *
+     * @return SessionManager
+     */
+    public function getSessionManager()
+    {
+        return $this->sessionManager;
+    }
+
+    /**
+     * Initializes sesssion
+     *
+     * @return void
+     */
     public function bootstrap()
     {
-        $this->session->start();
+        $this->getSessionManager()->start();
         $container = new SessionContainer('initialized');
         if (!isset($container->init)) {
-             $this->session->regenerateId(true);
+             $this->getSessionManager()->regenerateId(true);
              $container->init = 1;
         } 
                 
