@@ -10,7 +10,7 @@
  *
  * Accessibility Options
  *
- * Please fill this options to block unauthorized users to certain areas
+ * Please fill this options to block unauthenticated users to certain areas
  */
 $accessibilityOptions = array(
 
@@ -94,7 +94,7 @@ $otherOptions = array(
      * Authentication Service
      *
      * Please specify the DI alias for the configured Authentication Service instance that this module should use.
-     * You donot need to provide this value if you dont want to block access to unauthorized users
+     * You donot need to provide this value if you dont want to block access to unauthenticated users
      * Default : 'zfcuser_auth_service'
      */
      //'authentication_service' => 'zfcuser_auth_service',
