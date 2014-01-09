@@ -1,0 +1,37 @@
+{
+    "name": "hrevert/ht-session",
+    "description": "A Zend Framework 2 module to manage session configurations, session validators, storing session data in database and to block access to unauthorized users.",
+    "type": "library",
+    "keywords": [
+        "zf2"
+    ],
+    "homepage": "https://github.com/hrevert/HtSession",
+    "authors": [
+        {
+            "name": "Hrevert Technologies",
+            "email": "info@hrevert.com"
+        },
+        {
+            "name": "ojhaujjwal",
+            "email": "bring2uo@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3",
+        "zendframework/zend-stdlib": "~2.1",
+        "zendframework/zend-modulemanager": "~2.1",
+        "zendframework/zend-mvc": "~2.1",
+        "zendframework/zend-session": "~2.1"
+    },
+    "suggest": {
+        "zendframework/zend-db": "To store session in database"
+    },
+    "autoload": {
+        "psr-0": {
+            "HtSession": "src/"
+        },
+        "classmap": [
+            "./Module.php"
+        ]
+    }
+}
