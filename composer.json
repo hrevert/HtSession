@@ -1,6 +1,6 @@
 {
     "name": "hrevert/ht-session",
-    "description": "A Zend Framework 2 module to manage session configurations, session validators, storing session data in database and to block access to unauthorized users.",
+    "description": "A Zend Framework 2 module to manage session configurations, session validators, storing session data in database and to block access to unauthenticated users.",
     "type": "library",
     "keywords": [
         "zf2"
