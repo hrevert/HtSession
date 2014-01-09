@@ -4,7 +4,9 @@ HtSession
 A Zend Framework 2 module to manage session configurations, session validators, storing session data in database and to block access to unauthorized users. (Formerly ujjwal/auth)
 
 ##Requirements
-* Zend Framework 2
+The requirements of this module is listed in composer.json.
+ 
+##Installation
 * Add `"hrevert/ht-session": "dev-master",` to your composer.json and run `php composer.phar update`
 * Enable the module in `config/application.config.php`
 * Copy file located in `./vendor/hrevert/ht-session/config/HtSession.global.php` to `./config/autoload/HtSession.global.php` and change the values as you wish
