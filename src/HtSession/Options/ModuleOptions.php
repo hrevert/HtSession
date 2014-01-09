@@ -39,8 +39,12 @@ class ModuleOptions extends AbstractOptions implements SessionOptionsInterface
 
     public function setConfigOptions($configOptions) 
     {
-        
         $this->configOptions = $configOptions;
+    }
+
+    public function getConfigOptions()
+    {
+        return $this->configOptions;
     }
 
     public function setStorage($storage)

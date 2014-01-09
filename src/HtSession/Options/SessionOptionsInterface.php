@@ -24,6 +24,6 @@ interface SessionOptionsInterface
 
     public function getValidators();
 
-    public function addValidator(ValidatorInterface $validator)
+    public function addValidator(ValidatorInterface $validator);
 
 }

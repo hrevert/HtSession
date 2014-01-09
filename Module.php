@@ -59,7 +59,7 @@ class Module
                 'HtSession\Session\Manager' => 'HtSession\Factory\SessionManagerFactory',
                 'HtSession\ModuleOptions' => 'HtSession\Factory\ModuleOptionsFactory',
                 'HtSession\AccessibilityOptions' => 'HtSession\Factory\AccessibilityOptionsFactory',
-                'HtSession\DefaultSessionSetSaveHandler' => 'HtSession\Factory\SessionSetSaveHandlerFactory'
+                'HtSession\DefaultSessionSetSaveHandler' => 'HtSession\Factory\SessionSetSaveHandlerFactory',
                 'HtSession\AccesibilityGuard' => 'HtSession\Factory\AccesibilityGuardFactory'
             ),
             'aliases' => array(

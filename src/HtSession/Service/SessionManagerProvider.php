@@ -30,8 +30,9 @@ class SessionManagerProvider
     protected function getConfigObject()
     {
         if ($this->getSessionOptions()->getConfigClass()) {
-            $this->configObject = new $this->getSessionOptions()->getConfigClass();
-            $this->configObject->setOptions($this->getSessionOptions()->setConfigOptions());                 
+            $configClass = $this->getSessionOptions()->getConfigClass();
+            $this->configObject = new $configClass;
+            $this->configObject->setOptions($this->getSessionOptions()->getConfigOptions());                 
         }
 
         return $this->configObject;
@@ -40,7 +41,8 @@ class SessionManagerProvider
     protected function getStorageObject()
     {
         if ($this->getSessionOptions()->getStorage()) {
-            $this->sessionStorageObject = new $this->getSessionOptions()->getStorage();
+            $storageClass = $this->getSessionOptions()->getStorage();
+            $this->sessionStorageObject = new $storageClass;
         }
         return $this->sessionStorageObject;
     }
@@ -64,7 +66,7 @@ class SessionManagerProvider
         );
 
         $chain = $sessionManager->getValidatorChain();
-        foreach ($this->validators as $validator) {
+        foreach ($this->getSessionOptions()->getValidators() as $validator) {
             $chain->attach('session.validate', array($validator, 'isValid'));
         }
 

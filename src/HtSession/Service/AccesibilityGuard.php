@@ -35,13 +35,13 @@ class AccesibilityGuard
         $controllerClass = get_class($this->getRequestController());
         $moduleNamespace = substr($controllerClass, 0, strpos($controllerClass, '\\'));
         if (!in_array($moduleNamespace, $this->getAccessibilityOptions()->getModules()) && !in_array($controllerClass, $this->getAccessibilityOptions()->getControllers()['include'])) {
-            return false;
+            return true;
         }
         if (in_array($controllerClass, $this->getAccessibilityOptions()->getControllers()['exclude'])) {
-            return false;
+            return true;
         }
 
-        return true;
+        return false;
     }
 
 }

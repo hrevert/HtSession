@@ -6,7 +6,7 @@ use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 use HtSession\Service\AccesibilityGuard;
 
-class AccesibilityGuardFactory implements ServiceLocatorInterface
+class AccesibilityGuardFactory implements FactoryInterface
 {
     /**
      * gets Accesibility Guard
