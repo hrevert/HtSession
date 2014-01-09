@@ -23,7 +23,7 @@ Check Options available in `config/HtSession.global.php`
 
 ####Modules and Controllers Access
 
-With this module you can restrict unauthorized users from accessing certain controllers and modules. This can be done easily from module options. To do so, edit the `HtSession.global.php`
+With this module you can restrict unauthenticated users from accessing certain controllers and modules. This can be done easily from module options. To do so, edit the `HtSession.global.php`
 
 ```php
 $accessibilityOptions = array(
