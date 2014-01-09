@@ -1,7 +1,7 @@
 HtSession
 =========
 
-A Zend Framework 2 module to manage session configurations, session validators, storing session data in database and to block access to unauthenticated users. (Formerly ujjwal/auth)
+A Zend Framework 2 module to manage session configurations, session validators, storing session data in database. (Formerly ujjwal/auth)
 
 ##Requirements
 The requirements of this module is listed in composer.json.
@@ -16,52 +16,9 @@ The requirements of this module is listed in composer.json.
 Check Options available in `config/HtSession.global.php`
 
 ##Features
-* Modules and Controllers Access
 * Session configurations
 * Session set save handler
 * Session Validators
-
-####Modules and Controllers Access
-
-With this module you can restrict unauthenticated users from accessing certain controllers and modules. This can be done easily from module options. To do so, edit the `HtSession.global.php`
-
-```php
-$accessibilityOptions = array(
-
-    /**
-     * Log In Modules
-     *
-     * Please set modules where logged in user can only gain access
-     */
-    'modules' => array(
-            'Admin',
-            'Application',    
-    ),
-
-    /**
-     * Controllers where you can set if user can access or not
-     *
-     * 'controllers' => array(
-        'include' => array(), // Please set controllers where logged in user can only gain access
-
-
-        'exclude' => array(), // Please set controllers where public user as well as logged in user can gain access
-        // Note that, this part will override above `include` and `modules`
-     ),
-    */
-
-    /**
-     * Login Route
-     *
-     * Route where a user will be redirected when an unauthenticated user tried to access an unaccessible area
-     *
-     * Default: 'zfcuser/login'
-     *
-     */
-     // 'login_route' => 'zfcuser/login',
-
-);
-```
 
 #### Session configurations
 

@@ -6,44 +6,6 @@
  * drop this config file in it and change the values as you wish.
  */
 
-/**
- *
- * Accessibility Options
- *
- * Please fill this options to block unauthenticated users to certain areas
- */
-$accessibilityOptions = array(
-
-    /**
-     * Log In Modules
-     *
-     * Please set modules where logged in user can only gain access
-     */
-    //'modules' => array(),
-
-    /**
-     * Controllers where you can set if user can access or not
-     *
-     * 'controllers' => array(
-        'include' => array(), // Please set controllers where logged in user can only gain access
-
-
-        'exclude' => array(), // Please set controllers where public user as well as logged in user can gain access
-        // Note that, this part will override above `include` and `modules`
-     ),
-    */
-
-    /**
-     * Login Route
-     *
-     * Route where a user will be redirected when an unauthenticated user tries to access an unaccessible area
-     *
-     * Default: 'zfcuser/login'
-     *
-     */
-     // 'login_route' => 'zfcuser/login',
-
-);
 
 $moduleOptions = array(
     /**
@@ -90,15 +52,6 @@ $moduleOptions = array(
 );
 
 $otherOptions = array(
-    /**
-     * Authentication Service
-     *
-     * Please specify the DI alias for the configured Authentication Service instance that this module should use.
-     * You donot need to provide this value if you dont want to block access to unauthenticated users
-     * Default : 'zfcuser_auth_service'
-     */
-     //'authentication_service' => 'zfcuser_auth_service',
-
      /**
       *
       * Db Adapter Instance
@@ -126,7 +79,6 @@ $otherOptions = array(
  */
 return array(
     'htsession' => array(
-        'access' => $accessibilityOptions,
         'options' => $moduleOptions
     ),
     'service_manager' => array(
