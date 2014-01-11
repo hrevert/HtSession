@@ -43,11 +43,13 @@ class Module
             'factories' => array(
                 'HtSession\Session\Manager' => 'HtSession\Factory\SessionManagerFactory',
                 'HtSession\ModuleOptions' => 'HtSession\Factory\ModuleOptionsFactory',
-                'HtSession\DefaultSessionSetSaveHandler' => 'HtSession\Factory\SessionSetSaveHandlerFactory'
+                'HtSession\DefaultSessionSetSaveHandler' => 'HtSession\Factory\SessionSetSaveHandlerFactory',
+                'HtSession\DoctrineDbalSessionSetSaveHandler' => 'HtSession\Factory\DoctrineDbalSessionSetSaveHandlerFactory'
             ),
             'aliases' => array(
                 'HtSession\SessionSetSaveHandler' => 'HtSession\DefaultSessionSetSaveHandler',
                 'HtSessionDbAdapter' => 'Zend\Db\Adapter\Adapter',
+                'HtSessionDoctrineDbalConnection' => 'doctrine.connection.orm_default'
             )
         );
     }
