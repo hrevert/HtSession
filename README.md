@@ -47,6 +47,12 @@ $moduleOptions = array(
             'save_path' => 'data/session'
     ),
 
+    /**
+     * Session Storage Class
+     *
+     */
+    //'storage' => 'Zend\Session\Storage\SessionArrayStorage',
+
 );
 ```
 
