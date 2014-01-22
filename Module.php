@@ -5,15 +5,19 @@ namespace HtSession;
 use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
 use Zend\Session\Container as SessionContainer;
+use Zend\Http\Request as HttpRequest;
 
 class Module
 {
     public function onBootstrap(MvcEvent $e)
     {
-        $sm = $e->getApplication()->getServiceManager();
-        $sessionManager = $sm->get('HtSession\Session\Manager');
-        $sessionBootstraper = new Session\BootstrapSession($sessionManager);
-        $sessionBootstraper->bootstrap(); 
+        $serviceManager = $e->getApplication()->getServiceManager();
+        $sessionManager = $serviceManager->get('HtSession\Session\Manager');
+        $request = $serviceManager->get('Request');
+        if ($request instanceof HttpRequest) {
+            $sessionBootstraper = new Session\BootstrapSession($sessionManager);
+            $sessionBootstraper->bootstrap();             
+        }
     }
 
 
