@@ -56,6 +56,8 @@ $moduleOptions = array(
 );
 ```
 
+For more detailed description, click [here](https://github.com/hrevert/HtSession/tree/master/docs\Session Validators.md).
+
 #### Session set save handler
 
 This module also comes with session set save handler to store session data in database.
