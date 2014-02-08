@@ -11,26 +11,25 @@ class ModuleOptionsTest extends \PHPUnit_Framework_TestCase
     public function setUp()
     {
         $this->moduleOptions = new ModuleOptions(array(
-            'enable_session_set_handler' => false,
+            'enable_session_set_save_handler' => true,
             'config_class' => 'MyConfigClass',
             'config_options' => array('name' => 'hello'),
-            'validators' => array('MyValidator')
+            'validators' => array('Zend\Session\Validator\RemoteAddr')
         ));        
     }
 
     public function testSettersAndGetters()
     {
-        $this->assertEquals(false, $moduleOptions->getEnableSessionSetSaveHandler());
-        $this->assertEquals('MyConfigClass', $moduleOptions->getConfigClass());
-        $this->assertCount(1, $moduleOptions->getConfigOptions());
-        $this->assertEquals('hello', $moduleOptions->getConfigOptions()['name']);
-        $this->assertCount(1, $moduleOptions->getValidators());
-        //$this->assertTrue(in_array('MyValidator', $moduleOptions->getValidators()));
+        $this->assertEquals(true, $this->moduleOptions->getEnableSessionSetSaveHandler());
+        $this->assertEquals('MyConfigClass', $this->moduleOptions->getConfigClass());
+        $this->assertCount(1, $this->moduleOptions->getConfigOptions());
+        $this->assertEquals('hello', $this->moduleOptions->getConfigOptions()['name']);
+        $this->assertCount(1, $this->moduleOptions->getValidators());
     }
     
     public function testValidators()
     {
-        foreach ($moduleOptions->getValidators() as $validator) {
+        foreach ($this->moduleOptions->getValidators() as $validator) {
             $this->assertInstanceOf('Zend\Session\Validator\ValidatorInterface', $validator);
         }
     }    

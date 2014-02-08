@@ -60,14 +60,11 @@ class ModuleOptions extends AbstractOptions implements SessionOptionsInterface
     public function setValidators(array $validators)
     {
         foreach ($validators as $validator) {
-            if (!$validator instanceof ValidatorInterface) {
-                $validator = new $validator;
-            }
             $this->addValidator($validator);
         }
     }
 
-    public function addValidator(ValidatorInterface $validator)
+    public function addValidator($validator)
     {
         $this->validators[] = $validator;
     }

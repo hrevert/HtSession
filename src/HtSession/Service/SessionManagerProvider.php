@@ -6,6 +6,7 @@ use Zend\Session\Container as SessionContainer;
 use Zend\Session\SessionManager as ZendSessionManager;
 use Zend\Session\SaveHandler\SaveHandlerInterface;
 use HtSession\Options\SessionOptionsInterface;
+use HtSession\Service\ValidatorPluginManager;
 
 class SessionManagerProvider
 {
@@ -17,6 +18,8 @@ class SessionManagerProvider
 
     protected $sessionOptions;
 
+    protected $validatorPluginManager;
+
     public function setSessionOptions(SessionOptionsInterface $sessionOptions)
     {
         $this->sessionOptions = $sessionOptions;
@@ -25,6 +28,13 @@ class SessionManagerProvider
     public function getSessionOptions()
     {
         return $this->sessionOptions;
+    }
+
+    public function setValidatorPluginManager(ValidatorPluginManager $validatorPluginManager)
+    {
+        $this->validatorPluginManager = $validatorPluginManager;
+
+        return $this;
     }
 
     protected function getConfigObject()
@@ -66,7 +76,8 @@ class SessionManagerProvider
         );
 
         $chain = $sessionManager->getValidatorChain();
-        foreach ($this->getSessionOptions()->getValidators() as $validator) {
+        foreach ($this->getSessionOptions()->getValidators() as $validatorName) {
+            $validator = $this->validatorPluginManager->get($validatorName);
             $chain->attach('session.validate', array($validator, 'isValid'));
         }
 

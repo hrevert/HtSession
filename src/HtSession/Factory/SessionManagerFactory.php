@@ -16,6 +16,7 @@ class SessionManagerFactory implements FactoryInterface
         if ($options->getEnableSessionSetSaveHandler() === true) {
             $provider->setSessionSaveHandler($serviceLocator->get('HtSession\SessionSetSaveHandler'));
         }
+        $provider->setValidatorPluginManager($serviceLocator->get('HtSession\Service\ValidatorPluginManager'));
         return $provider->getSessionManager();
     }
 }
