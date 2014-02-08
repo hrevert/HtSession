@@ -1,6 +1,6 @@
 <?php
 
-namespace Zend\Session\SaveHandler;
+namespace HtSession\Session\SaveHandler;
 
 class DoctrineDbalTableGatewayOptions extends \Zend\Session\SaveHandler\DbTableGatewayOptions
 {
