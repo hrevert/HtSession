@@ -56,7 +56,6 @@ $moduleOptions = array(
 );
 ```
 
-For more detailed description, click [here](https://github.com/hrevert/HtSession/tree/master/docs\Session Validators.md).
 
 #### Session set save handler
 
@@ -122,6 +121,8 @@ $moduleOptions = array(
 );
 
 ```
+
+For more detailed description, click [here](https://github.com/hrevert/HtSession/blob/master/docs/Session%20Validators.md).
 
 ## Ending Thoughts
 
