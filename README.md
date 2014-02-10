@@ -127,3 +127,7 @@ For more detailed description, click [here](https://github.com/hrevert/HtSession
 ## Ending Thoughts
 
 Dont forget to fork this module and send me pull request to make this module even better!
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/hrevert/htsession/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
