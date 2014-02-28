@@ -26,11 +26,5 @@ class ModuleOptionsTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('hello', $this->moduleOptions->getConfigOptions()['name']);
         $this->assertCount(1, $this->moduleOptions->getValidators());
     }
-    
-    public function testValidators()
-    {
-        foreach ($this->moduleOptions->getValidators() as $validator) {
-            $this->assertInstanceOf('Zend\Session\Validator\ValidatorInterface', $validator);
-        }
-    }    
+        
 }
