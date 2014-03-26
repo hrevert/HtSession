@@ -2,9 +2,7 @@
 
 namespace HtSession;
 
-use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
-use Zend\Session\Container as SessionContainer;
 use Zend\Http\Request as HttpRequest;
 
 class Module
@@ -16,10 +14,9 @@ class Module
         $request = $serviceManager->get('Request');
         if ($request instanceof HttpRequest) {
             $sessionBootstraper = new Session\BootstrapSession($sessionManager);
-            $sessionBootstraper->bootstrap();             
+            $sessionBootstraper->bootstrap();
         }
     }
-
 
     public function getConfig()
     {
@@ -39,7 +36,6 @@ class Module
             ),
         );
     }
-    
 
     public function getServiceConfig()
     {

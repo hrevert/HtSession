@@ -15,7 +15,7 @@ class BootstrapSession
     /**
      * Constructor
      *
-     * @param SessionManager $sessionManager
+     * @param  SessionManager $sessionManager
      * @return void
      */
     public function __construct(SessionManager $sessionManager)
@@ -45,7 +45,7 @@ class BootstrapSession
         if (!isset($container->init)) {
              $this->getSessionManager()->regenerateId(true);
              $container->init = 1;
-        } 
-                
+        }
+
     }
 }

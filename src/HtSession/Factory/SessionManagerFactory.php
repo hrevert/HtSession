@@ -1,5 +1,5 @@
 <?php
-    
+
 namespace HtSession\Factory;
 
 use Zend\ServiceManager\FactoryInterface;
@@ -17,6 +17,7 @@ class SessionManagerFactory implements FactoryInterface
             $provider->setSessionSaveHandler($serviceLocator->get('HtSession\SessionSetSaveHandler'));
         }
         $provider->setValidatorPluginManager($serviceLocator->get('HtSession\Service\ValidatorPluginManager'));
+
         return $provider->getSessionManager();
     }
 }

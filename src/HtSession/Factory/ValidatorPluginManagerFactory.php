@@ -3,7 +3,6 @@ namespace HtSession\Factory;
 
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
-use Zend\Mvc\Service\AbstractPluginManagerFactory;
 use HtSession\Service\ValidatorPluginManager;
 use Zend\ServiceManager\Config;
 
@@ -18,6 +17,6 @@ class ValidatorPluginManagerFactory implements FactoryInterface
         $pluginManager = new ValidatorPluginManager(new Config($validatorsConfig));
         $pluginManager->setServiceLocator($serviceLocator);
 
-        return $pluginManager;        
+        return $pluginManager;
     }
 }

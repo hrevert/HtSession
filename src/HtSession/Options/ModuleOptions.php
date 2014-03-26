@@ -1,9 +1,8 @@
 <?php
-    
+
 namespace HtSession\Options;
 
 use Zend\Stdlib\AbstractOptions;
-use Zend\Session\Validator\ValidatorInterface;
 
 class ModuleOptions extends AbstractOptions implements SessionOptionsInterface
 {
@@ -24,7 +23,7 @@ class ModuleOptions extends AbstractOptions implements SessionOptionsInterface
 
     public function getEnableSessionSetSaveHandler()
     {
-        return $this->enableSessionSetSaveHandler; 
+        return $this->enableSessionSetSaveHandler;
     }
 
     public function setConfigClass($configClass)
@@ -37,7 +36,7 @@ class ModuleOptions extends AbstractOptions implements SessionOptionsInterface
         return $this->configClass;
     }
 
-    public function setConfigOptions($configOptions) 
+    public function setConfigOptions($configOptions)
     {
         $this->configOptions = $configOptions;
     }

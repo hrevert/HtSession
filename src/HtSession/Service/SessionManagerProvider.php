@@ -1,12 +1,11 @@
 <?php
-    
+
 namespace HtSession\Service;
 
 use Zend\Session\Container as SessionContainer;
 use Zend\Session\SessionManager as ZendSessionManager;
 use Zend\Session\SaveHandler\SaveHandlerInterface;
 use HtSession\Options\SessionOptionsInterface;
-use HtSession\Service\ValidatorPluginManager;
 
 class SessionManagerProvider
 {
@@ -42,7 +41,7 @@ class SessionManagerProvider
         if ($this->getSessionOptions()->getConfigClass()) {
             $configClass = $this->getSessionOptions()->getConfigClass();
             $this->configObject = new $configClass;
-            $this->configObject->setOptions($this->getSessionOptions()->getConfigOptions());                 
+            $this->configObject->setOptions($this->getSessionOptions()->getConfigOptions());
         }
 
         return $this->configObject;
@@ -54,6 +53,7 @@ class SessionManagerProvider
             $storageClass = $this->getSessionOptions()->getStorage();
             $this->sessionStorageObject = new $storageClass;
         }
+
         return $this->sessionStorageObject;
     }
 
@@ -70,8 +70,8 @@ class SessionManagerProvider
     public function getSessionManager()
     {
        $sessionManager = new ZendSessionManager(
-            $this->getConfigObject(), 
-            $this->getStorageObject(), 
+            $this->getConfigObject(),
+            $this->getStorageObject(),
             $this->getSessionSaveHandler()
         );
 
@@ -82,7 +82,8 @@ class SessionManagerProvider
         }
 
         SessionContainer::setDefaultManager($sessionManager);
+
         return $sessionManager;
     }
 
-} 
+}

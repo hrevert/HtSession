@@ -1,5 +1,5 @@
 <?php
-    
+
 namespace HtSessionTest\Options;
 
 use HtSession\Options\ModuleOptions;
@@ -15,7 +15,7 @@ class ModuleOptionsTest extends \PHPUnit_Framework_TestCase
             'config_class' => 'MyConfigClass',
             'config_options' => array('name' => 'hello'),
             'validators' => array('Zend\Session\Validator\RemoteAddr')
-        ));        
+        ));
     }
 
     public function testSettersAndGetters()
@@ -26,5 +26,5 @@ class ModuleOptionsTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('hello', $this->moduleOptions->getConfigOptions()['name']);
         $this->assertCount(1, $this->moduleOptions->getValidators());
     }
-        
+
 }

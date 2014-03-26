@@ -3,7 +3,6 @@
 namespace HtSession\Session\SaveHandler;
 
 use Doctrine\DBAL\Connection;
-use Zend\Session\SaveHandler\SaveHandlerInterface;
 
 /**
  * DB Table Gateway session save handler
@@ -18,8 +17,8 @@ class DoctrineDbalTableGateway extends \Zend\Session\SaveHandler\DbTableGateway
     /**
      * Constructor
      *
-     * @param EntityManagerInterface $connection
-     * @param DoctrineDbalTableGatewayOptions $options
+     * @param  EntityManagerInterface          $connection
+     * @param  DoctrineDbalTableGatewayOptions $options
      * @return void
      */
     public function __construct(Connection $connection, DoctrineDbalTableGatewayOptions $options)
@@ -27,7 +26,6 @@ class DoctrineDbalTableGateway extends \Zend\Session\SaveHandler\DbTableGateway
         $this->connection = $connection;
         $this->options      = $options;
     }
-
 
     /**
      * gets connection
@@ -40,7 +38,7 @@ class DoctrineDbalTableGateway extends \Zend\Session\SaveHandler\DbTableGateway
     }
 
     /**
-     * gets DbTableGatewayOptions 
+     * gets DbTableGatewayOptions
      *
      * @return DbTableGatewayOptions
      */
@@ -52,7 +50,8 @@ class DoctrineDbalTableGateway extends \Zend\Session\SaveHandler\DbTableGateway
     protected function find($id)
     {
         $queryBuilder = $this->getConnection()->createQueryBuilder();
-        return $queryBuilder 
+
+        return $queryBuilder
             ->select()
             ->from($this->getOptions()->getTableName())
             ->where(
@@ -66,12 +65,11 @@ class DoctrineDbalTableGateway extends \Zend\Session\SaveHandler\DbTableGateway
             ->execute()
             ->fetchAssoc();
     }
-    
-    
+
     /**
      * Read session data
      *
-     * @param string $id
+     * @param  string $id
      * @return string
      */
     public function read($id)
@@ -82,14 +80,15 @@ class DoctrineDbalTableGateway extends \Zend\Session\SaveHandler\DbTableGateway
             }
             $this->destroy($id);
         }
+
         return '';
     }
 
     /**
      * Write session data
      *
-     * @param string $id
-     * @param string $data
+     * @param  string $id
+     * @param  string $data
      * @return bool
      */
     public function write($id, $data)
@@ -98,7 +97,7 @@ class DoctrineDbalTableGateway extends \Zend\Session\SaveHandler\DbTableGateway
             $this->getOptions()->getModifiedColumn() => time(),
             $this->getOptions()->getDataColumn()     => (string) $data,
         );
-         
+
         if ($this->find($id)) {
             $this->getConnection()->update(
                 $this->getOptions()->getTableName(),
@@ -114,10 +113,10 @@ class DoctrineDbalTableGateway extends \Zend\Session\SaveHandler\DbTableGateway
         $data[$this->getOptions()->getLifetimeColumn()] = $this->lifetime;
         $data[$this->getOptions()->getIdColumn()]       = $id;
         $data[$this->getOptions()->getNameColumn()]     = $this->sessionName;
-        $this->getConnection()->insert($this->getOptions()->getTableName(), $data); 
+        $this->getConnection()->insert($this->getOptions()->getTableName(), $data);
+
         return true;
     }
-    
 
     /**
      * Destroy session
@@ -136,7 +135,7 @@ class DoctrineDbalTableGateway extends \Zend\Session\SaveHandler\DbTableGateway
     /**
      * Garbage Collection
      *
-     * @param int $maxlifetime
+     * @param  int  $maxlifetime
      * @return true
      */
     public function gc($maxlifetime)
@@ -145,13 +144,14 @@ class DoctrineDbalTableGateway extends \Zend\Session\SaveHandler\DbTableGateway
         $queryBuilder->delete($this->getOptions()->getTableName())
             ->expr()->lt(
                 sprintf(
-                    '%s + %s', 
+                    '%s + %s',
                     $this->getConnection()->quoteIdentifier($this->options->getModifiedColumn()),
                     $this->getConnection()->quoteIdentifier($this->options->getLifetimeColumn())
                 ),
                 time()
-            ); 
-        return $queryBuilder->execute();       
+            );
+
+        return $queryBuilder->execute();
     }
-                      
+
 }

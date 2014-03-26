@@ -2,8 +2,6 @@
 
 namespace HtSession\Options;
 
-use Zend\Session\Validator\ValidatorInterface;
-
 interface SessionOptionsInterface
 {
     public function setEnableSessionSetSaveHandler($enableSessionSetSaveHandler);

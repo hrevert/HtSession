@@ -1,5 +1,5 @@
 <?php
 namespace HtSession\Exception;
 
-class InvalidArgumentException extends \InvalidArgumentException
+class InvalidArgumentException implements ExceptionInterface extends \InvalidArgumentException
 {}

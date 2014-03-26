@@ -1,5 +1,5 @@
 <?php
-    
+
 namespace HtSession\Factory;
 
 use Zend\ServiceManager\FactoryInterface;
@@ -11,13 +11,14 @@ class ModuleOptionsFactory implements FactoryInterface
     /**
      * gets Module Options from config
      *
-     * @param ServiceLocatorInterface $serviceLocator
+     * @param  ServiceLocatorInterface $serviceLocator
      * @return ModuleOptions
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
         $config = $serviceLocator->get('Config');
         $moduleConfigArray = isset($config['htsession']['options']) ? $config['htsession']['options'] : array();
+
         return new ModuleOptions($moduleConfigArray);
-    }    
+    }
 }

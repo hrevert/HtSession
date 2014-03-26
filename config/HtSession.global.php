@@ -6,7 +6,6 @@
  * drop this config file in it and change the values as you wish.
  */
 
-
 $moduleOptions = array(
     /**
      * Session Config Class
@@ -25,7 +24,6 @@ $moduleOptions = array(
      */
     //'config_options' => array(),
 
-
     /**
      * Session Storage Class
      *
@@ -40,10 +38,9 @@ $moduleOptions = array(
      */
     //'validators' => array(),
 
-
     /**
      * Use session save handler or not.
-     * 
+     *
      * Default is true. Useful to store session data in database
      * see http://php.net/manual/en/function.session-set-save-handler.php
      * Accept values: true and false
