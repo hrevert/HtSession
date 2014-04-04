@@ -16,6 +16,4 @@ return array(
   'HtSession\Session\BootstrapSession'                         => __DIR__ . '/src/Session/BootstrapSession.php',
   'HtSession\Session\SaveHandler\DoctrineDbal'                 => __DIR__ . '/src/Session/SaveHandler/DoctrineDbal.php',
   'HtSession\Session\SaveHandler\DoctrineDbalOptions'          => __DIR__ . '/src/Session/SaveHandler/DoctrineDbalOptions.php',
-  'HtSessionTest\Factory\ModuleOptionsFactoryTest'             => __DIR__ . '/tests/HtSessionTest/Factory/ModuleOptionsFactoryTest.php',
-  'HtSessionTest\Options\ModuleOptionsTest'                    => __DIR__ . '/tests/HtSessionTest/Options/ModuleOptionsTest.php',
 );
