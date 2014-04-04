@@ -2,7 +2,7 @@
 
 namespace HtSession\Session\SaveHandler;
 
-class DoctrineDbalTableGatewayOptions extends \Zend\Session\SaveHandler\DbTableGatewayOptions
+class DoctrineDbalOptions extends \Zend\Session\SaveHandler\DbTableGatewayOptions
 {
     /**
      * Table Name

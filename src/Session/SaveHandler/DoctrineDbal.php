@@ -7,7 +7,7 @@ use Doctrine\DBAL\Connection;
 /**
  * DB Table Gateway session save handler
  */
-class DoctrineDbalTableGateway extends \Zend\Session\SaveHandler\DbTableGateway
+class DoctrineDbal extends \Zend\Session\SaveHandler\Db
 {
     /**
      * @var Connection
@@ -18,10 +18,10 @@ class DoctrineDbalTableGateway extends \Zend\Session\SaveHandler\DbTableGateway
      * Constructor
      *
      * @param  EntityManagerInterface          $connection
-     * @param  DoctrineDbalTableGatewayOptions $options
+     * @param  DoctrineDbalOptions $options
      * @return void
      */
-    public function __construct(Connection $connection, DoctrineDbalTableGatewayOptions $options)
+    public function __construct(Connection $connection, DoctrineDbalOptions $options)
     {
         $this->connection = $connection;
         $this->options      = $options;
@@ -38,9 +38,9 @@ class DoctrineDbalTableGateway extends \Zend\Session\SaveHandler\DbTableGateway
     }
 
     /**
-     * gets DbTableGatewayOptions
+     * gets DoctrineDbalOptions
      *
-     * @return DbTableGatewayOptions
+     * @return DoctrineDbalOptions
      */
     public function getOptions()
     {
