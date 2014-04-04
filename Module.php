@@ -50,7 +50,6 @@ class Module
             'aliases' => array(
                 'HtSession\SessionSetSaveHandler' => 'HtSession\DefaultSessionSetSaveHandler',
                 'HtSessionDbAdapter' => 'Zend\Db\Adapter\Adapter',
-                'HtSessionDoctrineDbalConnection' => 'doctrine.connection.orm_default',
             )
         );
     }

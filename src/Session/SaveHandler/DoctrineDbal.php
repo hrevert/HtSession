@@ -7,7 +7,7 @@ use Doctrine\DBAL\Connection;
 /**
  * DB Table Gateway session save handler
  */
-class DoctrineDbal extends \Zend\Session\SaveHandler\Db
+class DoctrineDbal extends \Zend\Session\SaveHandler\DbTableGateway
 {
     /**
      * @var Connection
@@ -52,25 +52,22 @@ class DoctrineDbal extends \Zend\Session\SaveHandler\Db
         $queryBuilder = $this->getConnection()->createQueryBuilder();
 
         return $queryBuilder
-            ->select()
-            ->from($this->getOptions()->getTableName())
+            ->select('*')
+            ->from($this->getOptions()->getTableName(), 's')
             ->where(
                 $queryBuilder->expr()->andX(
                     $queryBuilder->expr()->eq($this->getOptions()->getIdColumn(), '?'),
                     $queryBuilder->expr()->eq($this->getOptions()->getNameColumn(), '?')
                 )
             )
-            ->setParameter(1, $id)
-            ->setParameter(2, $this->sessionName)
+            ->setParameter(0, $id)
+            ->setParameter(1, $this->sessionName)
             ->execute()
-            ->fetchAssoc();
+            ->fetch(\PDO::FETCH_ASSOC);
     }
 
     /**
-     * Read session data
-     *
-     * @param  string $id
-     * @return string
+     * {@inheritDoc}
      */
     public function read($id)
     {
@@ -85,11 +82,7 @@ class DoctrineDbal extends \Zend\Session\SaveHandler\Db
     }
 
     /**
-     * Write session data
-     *
-     * @param  string $id
-     * @param  string $data
-     * @return bool
+     * {@inheritDoc}
      */
     public function write($id, $data)
     {
@@ -99,7 +92,7 @@ class DoctrineDbal extends \Zend\Session\SaveHandler\Db
         );
 
         if ($this->find($id)) {
-            $this->getConnection()->update(
+            return $this->getConnection()->update(
                 $this->getOptions()->getTableName(),
                 $data,
                 array(
@@ -119,37 +112,29 @@ class DoctrineDbal extends \Zend\Session\SaveHandler\Db
     }
 
     /**
-     * Destroy session
-     *
-     * @param  string $id
-     * @return bool
+     * {@inheritDoc}
      */
     public function destroy($id)
     {
-        return (bool) $this->getConnection()->delete(array(
+        return (bool) $this->getConnection()->delete($this->getOptions()->getTableName(), array(
             $this->getOptions()->getIdColumn()   => $id,
             $this->getOptions()->getNameColumn() => $this->sessionName,
         ));
     }
 
     /**
-     * Garbage Collection
-     *
-     * @param  int  $maxlifetime
-     * @return true
+     * {@inheritDoc}
      */
     public function gc($maxlifetime)
     {
         $queryBuilder = $this->getConnection()->createQueryBuilder();
         $queryBuilder->delete($this->getOptions()->getTableName())
-            ->expr()->lt(
-                sprintf(
-                    '%s + %s',
+            ->where(sprintf(
+                    '%s + %s < %s',
                     $this->getConnection()->quoteIdentifier($this->options->getModifiedColumn()),
-                    $this->getConnection()->quoteIdentifier($this->options->getLifetimeColumn())
-                ),
-                time()
-            );
+                    $this->getConnection()->quoteIdentifier($this->options->getLifetimeColumn()),
+                    time()
+            ));
 
         return $queryBuilder->execute();
     }

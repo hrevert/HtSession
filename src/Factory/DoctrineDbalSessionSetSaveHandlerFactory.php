@@ -4,13 +4,13 @@ namespace HtSession\Factory;
 
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
-use HtSession\Session\SaveHandler\DoctrineDbalTableGateway as DbTableGateway;
-use HtSession\Session\SaveHandler\DoctrineDbalTableGatewayOptions as DbTableGatewayOptions;
+use HtSession\Session\SaveHandler\DoctrineDbal;
+use HtSession\Session\SaveHandler\DoctrineDbalOptions;
 
 class DoctrineDbalSessionSetSaveHandlerFactory implements FactoryInterface
 {
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        return new DbTableGateway($serviceLocator->get('HtSessionDoctrineDbalConnection'), new DbTableGatewayOptions());
+        return new DoctrineDbal($serviceLocator->get('doctrine.connection.orm_default'), new DoctrineDbalOptions());
     }
 }
