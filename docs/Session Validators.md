@@ -19,8 +19,8 @@ return [
 ```
 Zend Framework 2 comes with 2 session validators:
 
-1. Zend\Session\Validator\RemoteAddr
-2. Zend\Session\Validator\HttpUserAgent
+1. [`Zend\Session\Validator\RemoteAddr`](https://github.com/zendframework/zf2/blob/master/library/Zend/Session/Validator/RemoteAddr.php)
+2. [`Zend\Session\Validator\HttpUserAgent`](https://github.com/zendframework/zf2/blob/master/library/Zend/Session/Validator/HttpUserAgent.php)
 
 ## Creating custom session validators
 To create a custom role providers, you first need to create a class that implements the Zend\Session\Validator\ValidatorInterface interface.
