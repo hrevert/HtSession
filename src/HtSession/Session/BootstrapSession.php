@@ -40,6 +40,9 @@ class BootstrapSession
      */
     public function bootstrap()
     {
+        if ('cli' == PHP_SAPI) {
+            return ;
+        }
         $this->getSessionManager()->start();
         $container = new SessionContainer('initialized');
         if (!isset($container->init)) {
