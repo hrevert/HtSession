@@ -10,9 +10,9 @@ class Module
     public function onBootstrap(MvcEvent $e)
     {
         $serviceManager = $e->getApplication()->getServiceManager();
-        $sessionManager = $serviceManager->get('HtSession\Session\Manager');
         $request = $serviceManager->get('Request');
         if ($request instanceof HttpRequest) {
+            $sessionManager = $serviceManager->get('HtSession\Session\Manager');
             $sessionBootstraper = new Session\BootstrapSession($sessionManager);
             $sessionBootstraper->bootstrap();
         }
